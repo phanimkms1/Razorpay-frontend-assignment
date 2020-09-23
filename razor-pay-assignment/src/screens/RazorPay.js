@@ -13,6 +13,8 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Button from '@material-ui/core/Button';
+import Modal from '@material-ui/core/Modal';
+
 
 const styles = theme => ({
 
@@ -34,7 +36,8 @@ class RazorPay extends Component {
             dob: "",
             pan: "",
             donationAmt: "",
-            radioValue:""
+            radioValue: "",
+            openModal: false
 
         }
     }
@@ -57,11 +60,15 @@ class RazorPay extends Component {
         this.setState({ donationAmt: e.target.value });
     }
     radioValueChangeHandler = (e) => {
-        this.setState ({ radioValue: e.target.value });
+        this.setState({ radioValue: e.target.value });
     }
-    paymentHandler =(e) => {
+    paymentHandler = (e) => {
         alert('Payment Successful !!');
     }
+    ccPayHandler =(e) =>{
+        this.setState({ openModal:true});
+    }
+   
     render() {
         const { classes } = this.props;
         return (
@@ -102,15 +109,22 @@ class RazorPay extends Component {
                             <Row>
                                 <Col className="column1"><InputLabel htmlFor="paymentMethod" >Payment Method :</InputLabel></Col>
                                 <Col className="column2">
-                                <RadioGroup aria-label="paymentType" name="type" value={this.state.radioValue} onChange={this.radioValueChangeHandler}>
-                                <FormControlLabel value="1" control={<Radio color="primary" />} label="Credit Card" />
-                                <FormControlLabel value="2" control={<Radio color="primary" />} label="Debit Card" />
-                                <FormControlLabel value="3" control={<Radio color="primary" />} label="Net Banking" />
-                                <FormControlLabel value="4" control={<Radio color="primary" />} label="UPI" />
-                                <FormControlLabel value="5" control={<Radio color="primary" />} label="NEFT/RTGS" />
+                                    <RadioGroup aria-label="paymentType" name="type" value={this.state.radioValue} onChange={this.radioValueChangeHandler}>
+                                        <FormControlLabel value="1" control={<Radio color="primary" />} label="Credit Card" onClick={this.ccPayHandler} />
+                                        <Modal
+                                            open={this.openModalHandler}
+                                            onClose={this.closeModalHandler}
+                                            
+                                        >
+                                            <h1>Content to design Credit Card payment Goes here</h1>
+                                        </Modal>
+                                        <FormControlLabel value="2" control={<Radio color="primary" />} label="Debit Card" />
+                                        <FormControlLabel value="3" control={<Radio color="primary" />} label="Net Banking" />
+                                        <FormControlLabel value="4" control={<Radio color="primary" />} label="UPI" />
+                                        <FormControlLabel value="5" control={<Radio color="primary" />} label="NEFT/RTGS" />
 
-                            </RadioGroup>
-                                    </Col>
+                                    </RadioGroup>
+                                </Col>
                             </Row>
 
                         </Container>
