@@ -9,6 +9,9 @@ import { withStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import Input from '@material-ui/core/Input';
 import { Container, Row, Col } from 'reactstrap';
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 const styles = theme => ({
 
@@ -27,29 +30,33 @@ class RazorPay extends Component {
             donorName: "",
             emailId: "",
             mobileNum: "",
-            dob:"",
-            pan:"",
-            donationAmt:""
-            
+            dob: "",
+            pan: "",
+            donationAmt: "",
+            radioValue:""
+
         }
     }
     donorNameChangeHandler = (e) => {
         this.setState({ donorName: e.target.value });
     }
-    emailIdChangeHandler = (e) =>{
-        this.setState({ emailId:e.target.value });
+    emailIdChangeHandler = (e) => {
+        this.setState({ emailId: e.target.value });
     }
-    mobileNumChangeHandler =(e) => {
-        this.setState ({ mobileNum:e.target.value });
+    mobileNumChangeHandler = (e) => {
+        this.setState({ mobileNum: e.target.value });
     }
-    dobChangeHandler =(e) =>{
-        this.setState ({ dob:e.target.value });
+    dobChangeHandler = (e) => {
+        this.setState({ dob: e.target.value });
     }
-    panChangeHandler =(e) =>{
-        this.setState ({ pan:e.target.value });
+    panChangeHandler = (e) => {
+        this.setState({ pan: e.target.value });
     }
-    donationAmtChangeHandler =(e) =>{
-        this.setState ({ donationAmt:e.target.value});
+    donationAmtChangeHandler = (e) => {
+        this.setState({ donationAmt: e.target.value });
+    }
+    radioValueChangeHandler = (e) => {
+        this.setState ({ radioValue: e.target.value });
     }
     render() {
         const { classes } = this.props;
@@ -82,11 +89,24 @@ class RazorPay extends Component {
                             </Row>
                             <Row>
                                 <Col className="column1"><InputLabel htmlFor="pan" >PAN No :</InputLabel></Col>
-                                <Col className="column2"><Input id="pan"  onChange={this.panChangeHandler}></Input></Col>
+                                <Col className="column2"><Input id="pan" onChange={this.panChangeHandler}></Input></Col>
                             </Row>
                             <Row>
                                 <Col className="column1"><InputLabel htmlFor="donationAmt" >Donation Amount :</InputLabel></Col>
-                                <Col className="column2"><Input id="donationAmt"  onChange={this.donationAmtChangeHandler}></Input></Col>
+                                <Col className="column2"><Input id="donationAmt" onChange={this.donationAmtChangeHandler}></Input></Col>
+                            </Row>
+                            <Row>
+                                <Col className="column1"><InputLabel htmlFor="paymentMethod" >Payment Method :</InputLabel></Col>
+                                <Col className="column2">
+                                <RadioGroup aria-label="paymentType" name="type" value={this.state.radioValue} onChange={this.radioValueChangeHandler}>
+                                <FormControlLabel value="1" control={<Radio color="primary" />} label="Credit Card" />
+                                <FormControlLabel value="2" control={<Radio color="primary" />} label="Debit Card" />
+                                <FormControlLabel value="3" control={<Radio color="primary" />} label="Net Banking" />
+                                <FormControlLabel value="4" control={<Radio color="primary" />} label="UPI" />
+                                <FormControlLabel value="5" control={<Radio color="primary" />} label="NEFT/RTGS" />
+
+                            </RadioGroup>
+                                    </Col>
                             </Row>
 
                         </Container>
