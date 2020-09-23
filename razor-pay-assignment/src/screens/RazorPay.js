@@ -12,6 +12,7 @@ import { Container, Row, Col } from 'reactstrap';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Button from '@material-ui/core/Button';
 
 const styles = theme => ({
 
@@ -57,6 +58,9 @@ class RazorPay extends Component {
     }
     radioValueChangeHandler = (e) => {
         this.setState ({ radioValue: e.target.value });
+    }
+    paymentHandler =(e) => {
+        alert('Payment Successful !!');
     }
     render() {
         const { classes } = this.props;
@@ -110,6 +114,7 @@ class RazorPay extends Component {
                             </Row>
 
                         </Container>
+                        <Button className="paybtn" variant="contained" color="primary" onClick={this.paymentHandler}>Pay</Button>
 
                     </CardContent >
                 </Card >
