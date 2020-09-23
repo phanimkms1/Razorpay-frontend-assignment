@@ -21,6 +21,36 @@ const styles = theme => ({
 });
 
 class RazorPay extends Component {
+    constructor() {
+        super();
+        this.state = {
+            donorName: "",
+            emailId: "",
+            mobileNum: "",
+            dob:"",
+            pan:"",
+            donationAmt:""
+            
+        }
+    }
+    donorNameChangeHandler = (e) => {
+        this.setState({ donorName: e.target.value });
+    }
+    emailIdChangeHandler = (e) =>{
+        this.setState({ emailId:e.target.value });
+    }
+    mobileNumChangeHandler =(e) => {
+        this.setState ({ mobileNum:e.target.value });
+    }
+    dobChangeHandler =(e) =>{
+        this.setState ({ dob:e.target.value });
+    }
+    panChangeHandler =(e) =>{
+        this.setState ({ pan:e.target.value });
+    }
+    donationAmtChangeHandler =(e) =>{
+        this.setState ({ donationAmt:e.target.value});
+    }
     render() {
         const { classes } = this.props;
         return (
