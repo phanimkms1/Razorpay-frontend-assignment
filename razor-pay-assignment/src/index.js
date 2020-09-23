@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import RazorPay from './screens/RazorPay';
+import 'typeface-roboto';
 
 ReactDOM.render(
   <React.StrictMode>
-    <div>
-      Razor Pay
-    </div>
+    <RazorPay/>
   </React.StrictMode>,
   document.getElementById('root')
 );

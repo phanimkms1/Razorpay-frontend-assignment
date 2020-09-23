@@ -1,0 +1,22 @@
+
+.cardStyle{
+    width:70%;
+    padding: 32px 64px 32px 64px;
+    margin-top:50px !important;
+    margin: auto;
+    text-align: left;
+    cursor: pointer;
+    
+}
+.cardStyle:hover{
+    background-color:#d3d3d3;
+}
+
+.column1{
+    padding-top: 20px;
+    
+}
+.column2{
+    padding-top: 10px;
+    
+}
